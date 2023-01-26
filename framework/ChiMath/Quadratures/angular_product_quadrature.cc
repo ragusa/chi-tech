@@ -1,6 +1,6 @@
 #include "angular_product_quadrature.h"
-#include "quadrature_gausslegendre.h"
-#include "quadrature_gausschebyshev.h"
+#include "ChiMath/Quadratures/GaussLegendre/quadrature_gausslegendre.h"
+#include "ChiMath/Quadratures/GaussCHEBYSHEV/quadrature_gausschebyshev.h"
 
 #include <cmath>
 #include <sstream>
@@ -111,47 +111,47 @@ void chi_math::ProductQuadrature::
  *                             which does not apply any normalization. If a
  *                             positive number is provided, the weights will be
  *                             normalized to sum to this number.*/
-void chi_math::ProductQuadrature::
-  OptimizeForPolarSymmetry(const double normalization)
-{
-  std::vector<chi_math::QuadraturePointPhiTheta> new_abscissae;
-  std::vector<double>                            new_weights;
-  std::vector<chi_mesh::Vector3>                 new_omegas;
-  std::vector<double>                            new_polar_ang;
-  std::vector<double>                            new_azimu_ang;
-
-  const size_t num_pol = polar_ang.size();
-  const size_t num_azi = azimu_ang.size();
-
-  std::vector<unsigned int> new_polar_map;
-  for (size_t p=0; p<num_pol; ++p)
-    if (polar_ang[p] < M_PI_2)
-    {
-      new_polar_ang.push_back(polar_ang[p]);
-      new_polar_map.push_back(p);
-    }
-  new_azimu_ang = azimu_ang;
-
-  const size_t new_num_pol = new_polar_ang.size();
-  double weight_sum = 0.0;
-  for (size_t a=0; a<num_azi; ++a)
-    for (size_t p=0; p<new_num_pol; ++p)
-    {
-      const auto pmap = new_polar_map[p];
-      const auto dmap = GetAngleNum(pmap,a);
-      new_weights.push_back(weights[dmap]);
-      weight_sum += weights[dmap];
-    }
-
-  if (normalization > 0.0)
-    for (double& w : new_weights)
-      w *= normalization/weight_sum;
-
-
-  AssembleCosines(new_azimu_ang, new_polar_ang,new_weights,false);
-  polar_ang = new_polar_ang;
-  azimu_ang = new_azimu_ang;
-}
+//void chi_math::ProductQuadrature::
+//  OptimizeForPolarSymmetry(const double normalization)
+//{
+//  std::vector<chi_math::QuadraturePointPhiTheta> new_abscissae;
+//  std::vector<double>                            new_weights;
+//  std::vector<chi_mesh::Vector3>                 new_omegas;
+//  std::vector<double>                            new_polar_ang;
+//  std::vector<double>                            new_azimu_ang;
+//
+//  const size_t num_pol = polar_ang.size();
+//  const size_t num_azi = azimu_ang.size();
+//
+//  std::vector<unsigned int> new_polar_map;
+//  for (size_t p=0; p<num_pol; ++p)
+//    if (polar_ang[p] < M_PI_2)
+//    {
+//      new_polar_ang.push_back(polar_ang[p]);
+//      new_polar_map.push_back(p);
+//    }
+//  new_azimu_ang = azimu_ang;
+//
+//  const size_t new_num_pol = new_polar_ang.size();
+//  double weight_sum = 0.0;
+//  for (size_t a=0; a<num_azi; ++a)
+//    for (size_t p=0; p<new_num_pol; ++p)
+//    {
+//      const auto pmap = new_polar_map[p];
+//      const auto dmap = GetAngleNum(pmap,a);
+//      new_weights.push_back(weights[dmap]);
+//      weight_sum += weights[dmap];
+//    }
+//
+//  if (normalization > 0.0)
+//    for (double& w : new_weights)
+//      w *= normalization/weight_sum;
+//
+//
+//  AssembleCosines(new_azimu_ang, new_polar_ang,new_weights,false);
+//  polar_ang = new_polar_ang;
+//  azimu_ang = new_azimu_ang;
+//}
 
 
 //###################################################################
@@ -180,32 +180,32 @@ chi_math::AngularQuadratureProdGL::
 
 
 //###################################################################
-/**Constructor for Angular Gauss-Legendre-Legendre.*/
-chi_math::AngularQuadratureProdGLL::
-  AngularQuadratureProdGLL(int Na, int Np, bool verbose)
-{
-  chi_math::QuadratureGaussLegendre gl_polar(Np*2);
-  chi_math::QuadratureGaussLegendre gl_azimu(Na*4);
-
-  //================================================= Create azimuthal angles
-  azimu_ang.clear();
-  for (unsigned int i = 0; i < (Na*4); ++i)
-    azimu_ang.emplace_back(M_PI*gl_azimu.qpoints[i][0] + M_PI);
-
-  //================================================== Create polar angles
-  polar_ang.clear();
-  for (unsigned int j = 0; j < (Np*2); ++j)
-    polar_ang.emplace_back(M_PI-acos(gl_polar.qpoints[j][0]));
-
-  //================================================== Create combined weights
-  std::vector<double> weights;
-  for (unsigned int i = 0; i < azimu_ang.size(); ++i)
-    for (unsigned int j = 0; j < polar_ang.size(); ++j)
-      weights.emplace_back(M_PI*gl_azimu.weights[i]*gl_polar.weights[j]);
-
-  //================================================== Initialize
-  AssembleCosines(azimu_ang, polar_ang, weights, verbose);
-}
+///**Constructor for Angular Gauss-Legendre-Legendre.*/
+//chi_math::AngularQuadratureProdGLL::
+//  AngularQuadratureProdGLL(int Na, int Np, bool verbose)
+//{
+//  chi_math::QuadratureGaussLegendre gl_polar(Np*2);
+//  chi_math::QuadratureGaussLegendre gl_azimu(Na*4);
+//
+//  //================================================= Create azimuthal angles
+//  azimu_ang.clear();
+//  for (unsigned int i = 0; i < (Na*4); ++i)
+//    azimu_ang.emplace_back(M_PI*gl_azimu.qpoints[i][0] + M_PI);
+//
+//  //================================================== Create polar angles
+//  polar_ang.clear();
+//  for (unsigned int j = 0; j < (Np*2); ++j)
+//    polar_ang.emplace_back(M_PI-acos(gl_polar.qpoints[j][0]));
+//
+//  //================================================== Create combined weights
+//  std::vector<double> weights;
+//  for (unsigned int i = 0; i < azimu_ang.size(); ++i)
+//    for (unsigned int j = 0; j < polar_ang.size(); ++j)
+//      weights.emplace_back(M_PI*gl_azimu.weights[i]*gl_polar.weights[j]);
+//
+//  //================================================== Initialize
+//  AssembleCosines(azimu_ang, polar_ang, weights, verbose);
+//}
 
 //###################################################################
 /**Constructor for Angular Gauss-Legendre-Chebyshev.*/

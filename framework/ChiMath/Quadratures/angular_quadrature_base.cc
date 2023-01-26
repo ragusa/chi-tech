@@ -16,32 +16,32 @@
  *                             which does not apply any normalization. If a
  *                             positive number is provided, the weights will be
  *                             normalized to sum to this number.*/
-void chi_math::AngularQuadrature::
-  OptimizeForPolarSymmetry(const double normalization)
-{
-  std::vector<chi_math::QuadraturePointPhiTheta> new_abscissae;
-  std::vector<double>                            new_weights;
-  std::vector<chi_mesh::Vector3>                 new_omegas;
-
-  const size_t num_dirs = omegas.size();
-  double weight_sum = 0.0;
-  for (size_t d=0; d<num_dirs; ++d)
-    if (omegas[d].z > 0.0)
-    {
-      new_abscissae.emplace_back(abscissae[d]);
-      new_weights.emplace_back(weights[d]);
-      new_omegas.emplace_back(omegas[d]);
-      weight_sum += weights[d];
-    }
-
-  if (normalization > 0.0)
-    for (double& w : new_weights)
-      w *= normalization/weight_sum;
-
-  abscissae = std::move(new_abscissae);
-  weights   = std::move(new_weights);
-  omegas    = std::move(new_omegas);
-}
+//void chi_math::AngularQuadrature::
+//  OptimizeForPolarSymmetry(const double normalization)
+//{
+//  std::vector<chi_mesh::Vector3>                 new_omegas;
+//  std::vector<chi_math::QuadraturePointPhiTheta> new_abscissae;
+//  std::vector<double>                            new_weights;
+//
+//  const size_t num_dirs = omegas.size();
+//  double weight_sum = 0.0;
+//  for (size_t d=0; d<num_dirs; ++d)
+//    if (omegas[d].z > 0.0)
+//    {
+//      new_abscissae.emplace_back(abscissae[d]);
+//      new_weights.emplace_back(weights[d]);
+//      new_omegas.emplace_back(omegas[d]);
+//      weight_sum += weights[d];
+//    }
+//
+//  if (normalization > 0.0)
+//    for (double& w : new_weights)
+//      w *= normalization/weight_sum;
+//
+//  abscissae = std::move(new_abscissae);
+//  weights   = std::move(new_weights);
+//  omegas    = std::move(new_omegas);
+//}
 
 //###################################################################
 /**Populates a map of moment m to the Spherical Harmonic indices

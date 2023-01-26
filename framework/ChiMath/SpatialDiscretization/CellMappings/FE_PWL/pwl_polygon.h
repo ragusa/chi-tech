@@ -2,8 +2,8 @@
 #define PWL_POLYGON_VALUES_H
 
 #include "ChiMath/SpatialDiscretization/CellMappings/FE_PWL/pwl_cellbase.h"
-#include "ChiMath/Quadratures/quadrature_line.h"
-#include "ChiMath/Quadratures/quadrature_triangle.h"
+#include "ChiMath/Quadratures/Line/quadrature_line.h"
+#include "ChiMath/Quadratures/Triangle/quadrature_triangle.h"
 #include "ChiMesh/Cell/cell.h"
 
 #include <array>

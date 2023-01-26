@@ -1,4 +1,4 @@
-#include "ChiMath/Quadratures/cylindrical_angular_quadrature.h"
+#include "cylindrical_angular_quadrature.h"
 
 #include <algorithm>
 #include <limits>

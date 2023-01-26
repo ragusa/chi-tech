@@ -1,7 +1,7 @@
 #ifndef SPHERICAL_ANGULAR_QUADRATURE_H
 #define SPHERICAL_ANGULAR_QUADRATURE_H
 
-#include "ChiMath/Quadratures/curvilinear_angular_quadrature.h"
+#include "ChiMath/Quadratures/angular_curvilinear_quadrature.h"
 
 #include "ChiMath/Quadratures/quadrature.h"
 

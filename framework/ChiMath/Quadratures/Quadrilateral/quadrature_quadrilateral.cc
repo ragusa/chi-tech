@@ -1,6 +1,6 @@
 #include "quadrature_quadrilateral.h"
 
-#include "quadrature_gausslegendre.h"
+#include "ChiMath/Quadratures/GaussLegendre/quadrature_gausslegendre.h"
 
 //###################################################################
 /**Initialzes a set of points for a quadrature integration over

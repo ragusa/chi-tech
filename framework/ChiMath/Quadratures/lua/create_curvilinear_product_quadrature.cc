@@ -2,10 +2,10 @@
 
 #include "chi_runtime.h"
 
-#include "ChiMath/Quadratures/quadrature_gausschebyshev.h"
-#include "ChiMath/Quadratures/quadrature_gausslegendre.h"
-#include "ChiMath/Quadratures/cylindrical_angular_quadrature.h"
-#include "ChiMath/Quadratures/spherical_angular_quadrature.h"
+#include "ChiMath/Quadratures/GaussChebyshev/quadrature_gausschebyshev.h"
+#include "ChiMath/Quadratures/GaussLegendre/quadrature_gausslegendre.h"
+#include "ChiMath/Quadratures/Cylindrical/cylindrical_angular_quadrature.h"
+#include "ChiMath/Quadratures/Spherical/spherical_angular_quadrature.h"
 
 #include "chi_log.h"
 
@@ -111,25 +111,25 @@ int chiCreateCylindricalProductQuadrature(lua_State *L)
 
       return 1;
     }
-    case chi_math::ProductQuadratureType::GAUSS_LEGENDRE_LEGENDRE:
-    {
-      chi::log.Log()
-        << "chiCreateCylindricalProductQuadrature : "
-        << "Creating Gauss-Legendre-Legendre Quadrature\n";
-
-      const auto quad_pol = chi_math::QuadratureGaussLegendre(Np, verbose);
-      std::vector<chi_math::Quadrature> quad_azi;
-      for (const auto& Na : vNa)
-        quad_azi.emplace_back(chi_math::QuadratureGaussLegendre(Na, verbose));
-      const auto new_quad =
-        std::make_shared<chi_math::CylindricalAngularQuadrature>(quad_pol, quad_azi, verbose);
-
-      chi::angular_quadrature_stack.push_back(new_quad);
-      const size_t index = chi::angular_quadrature_stack.size() - 1;
-      lua_pushnumber(L,static_cast<lua_Number>(index));
-
-      return 1;
-    }
+//    case chi_math::ProductQuadratureType::GAUSS_LEGENDRE_LEGENDRE:
+//    {
+//      chi::log.Log()
+//        << "chiCreateCylindricalProductQuadrature : "
+//        << "Creating Gauss-Legendre-Legendre Quadrature\n";
+//
+//      const auto quad_pol = chi_math::QuadratureGaussLegendre(Np, verbose);
+//      std::vector<chi_math::Quadrature> quad_azi;
+//      for (const auto& Na : vNa)
+//        quad_azi.emplace_back(chi_math::QuadratureGaussLegendre(Na, verbose));
+//      const auto new_quad =
+//        std::make_shared<chi_math::CylindricalAngularQuadrature>(quad_pol, quad_azi, verbose);
+//
+//      chi::angular_quadrature_stack.push_back(new_quad);
+//      const size_t index = chi::angular_quadrature_stack.size() - 1;
+//      lua_pushnumber(L,static_cast<lua_Number>(index));
+//
+//      return 1;
+//    }
     default:
     {
       chi::log.LogAllError()

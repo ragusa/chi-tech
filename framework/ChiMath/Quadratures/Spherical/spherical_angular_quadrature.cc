@@ -1,4 +1,4 @@
-#include "ChiMath/Quadratures/spherical_angular_quadrature.h"
+#include "spherical_angular_quadrature.h"
 
 #include <algorithm>
 #include <limits>

@@ -1,7 +1,7 @@
 #ifndef QUADRATURE_HEXAHEDRON_H
 #define QUADRATURE_HEXAHEDRON_H
 
-#include "quadrature.h"
+#include "ChiMath/Quadratures/quadrature.h"
 
 namespace chi_math
 {

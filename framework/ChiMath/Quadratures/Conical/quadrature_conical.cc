@@ -1,6 +1,6 @@
 #include "quadrature_conical.h"
 
-#include "ChiMath/Quadratures/quadrature_gausslegendre.h"
+#include "ChiMath/Quadratures/GaussLegendre/quadrature_gausslegendre.h"
 #include "ChiMath/Quadratures/Jacobi/quadrature_jacobi.h"
 
 //###################################################################

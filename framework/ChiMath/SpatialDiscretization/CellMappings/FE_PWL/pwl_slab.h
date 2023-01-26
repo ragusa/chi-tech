@@ -2,7 +2,7 @@
 #define PWL_SLAB_VALUES_H
 
 #include "ChiMath/SpatialDiscretization/CellMappings/FE_PWL/pwl_cellbase.h"
-#include "ChiMath/Quadratures/quadrature_line.h"
+#include "ChiMath/Quadratures/Line/quadrature_line.h"
 #include "ChiMesh/Cell/cell.h"
 #include "pwl_cellbase.h"
 #include <array>

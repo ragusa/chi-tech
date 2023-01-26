@@ -94,7 +94,7 @@ int chiSimTest06_WDD(lua_State* L)
   else if (dimension == 2)
   {
     quadrature = std::make_shared<chi_math::AngularQuadratureProdGLC>(8,8);
-    quadrature->OptimizeForPolarSymmetry(4.0*M_PI);
+//    quadrature->OptimizeForPolarSymmetry(4.0*M_PI);
   }
   else if (dimension == 3)
     quadrature = std::make_shared<chi_math::AngularQuadratureProdGLC>(8,8);

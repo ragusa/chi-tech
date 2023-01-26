@@ -13,14 +13,14 @@ namespace chi_math
     UNKNOWN                  = 0,
     GAUSS_LEGENDRE           = 1,
     GAUSS_CHEBYSHEV          = 2,
-    GAUSS_LEGENDRE_LEGENDRE  = 3,
+//    GAUSS_LEGENDRE_LEGENDRE  = 3,
     GAUSS_LEGENDRE_CHEBYSHEV = 4,
     CUSTOM_QUADRATURE        = 5,
   };
 
   class ProductQuadrature;
   class AngularQuadratureProdGL;
-  class AngularQuadratureProdGLL;
+//  class AngularQuadratureProdGLL;
   class AngularQuadratureProdGLC;
   class AngularQuadratureProdCustom;
 }
@@ -49,7 +49,7 @@ public:
                        const std::vector<double>& in_weights,
                        bool verbose);
 
-  void OptimizeForPolarSymmetry(double normalization) override;
+//  void OptimizeForPolarSymmetry(double normalization) override;
   /**Obtains the abscissae index given the indices of the
    * polar angle index and the azimuthal angle index.*/
   unsigned int GetAngleNum(const unsigned int polar_angle_index,
@@ -69,12 +69,12 @@ public:
 };
 
 //######################################################### Class def
-class chi_math::AngularQuadratureProdGLL : public chi_math::ProductQuadrature
-{
-public:
-  explicit
-  AngularQuadratureProdGLL(int Na, int Np, bool verbose=false);
-};
+//class chi_math::AngularQuadratureProdGLL : public chi_math::ProductQuadrature
+//{
+//public:
+//  explicit
+//  AngularQuadratureProdGLL(int Na, int Np, bool verbose=false);
+//};
 
 //######################################################### Class def
 class chi_math::AngularQuadratureProdGLC : public chi_math::ProductQuadrature
@@ -90,7 +90,8 @@ class chi_math::AngularQuadratureProdCustom : public chi_math::ProductQuadrature
 public:
   AngularQuadratureProdCustom(const std::vector<double>& azimuthal,
                               const std::vector<double>& polar,
-                              const std::vector<double>& in_weights, bool verbose);
+                              const std::vector<double>& in_weights,
+                              bool verbose);
 };
 
 #endif

@@ -1,6 +1,6 @@
 #include "LBSCurvilinear/lbs_curvilinear_sweepchunk_pwl.h"
 
-#include "ChiMath/Quadratures/curvilinear_angular_quadrature.h"
+#include "ChiMath/Quadratures/angular_curvilinear_quadrature.h"
 #include "LinearBoltzmannSolver/Groupset/lbs_groupset.h"
 
 lbs_curvilinear::SweepChunkPWL::

@@ -1,7 +1,7 @@
 #ifndef QUADRATURE_GAUSS_LEGENDRE_H
 #define QUADRATURE_GAUSS_LEGENDRE_H
 
-#include "quadrature.h"
+#include "ChiMath/Quadratures/quadrature.h"
 
 namespace chi_math
 {

@@ -3,8 +3,8 @@
 #include "chi_runtime.h"
 
 #include "ChiMath/chi_math.h"
-#include "../quadrature_gausslegendre.h"
-#include "../quadrature_gausschebyshev.h"
+#include "ChiMath/Quadratures/GaussLegendre/quadrature_gausslegendre.h"
+#include "ChiMath/Quadratures/GaussChebyshev/quadrature_gausschebyshev.h"
 
 #include "chi_log.h"
 ;

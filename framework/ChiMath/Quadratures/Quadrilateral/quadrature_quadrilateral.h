@@ -1,7 +1,7 @@
 #ifndef QUADRATURE_QUADRILATERAL_H
 #define QUADRATURE_QUADRILATERAL_H
 
-#include "quadrature.h"
+#include "ChiMath/Quadratures/quadrature.h"
 
 namespace chi_math
 {

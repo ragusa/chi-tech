@@ -3,10 +3,10 @@
 
 #include "ChiMath/SpatialDiscretization/FiniteElement/spatial_discretization_FE.h"
 
-#include "ChiMath/Quadratures/quadrature_line.h"
-#include "ChiMath/Quadratures/quadrature_triangle.h"
-#include "ChiMath/Quadratures/quadrature_quadrilateral.h"
-#include "ChiMath/Quadratures/quadrature_tetrahedron.h"
+#include "ChiMath/Quadratures/Line/quadrature_line.h"
+#include "ChiMath/Quadratures/Triangle/quadrature_triangle.h"
+#include "ChiMath/Quadratures/Quadrilateral/quadrature_quadrilateral.h"
+#include "ChiMath/Quadratures/Tetrahedron/quadrature_tetrahedron.h"
 
 namespace chi_math
 {

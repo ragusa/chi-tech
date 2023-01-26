@@ -7,7 +7,7 @@
 #include "chi_log.h"
 
 //########################################################## Create empty system
-/** Creates an angular quadrature.
+/** Creates a custom angular quadrature.
  *
 \param azimuthal_angles array A lua table with N entries each being an azimuthal
                               angle.
@@ -79,10 +79,10 @@ int chiCreateCustomAngularQuadrature(lua_State *L)
   chi::log.Log() << "Creating Custom Angular Quadrature\n";
 
   auto new_quad = std::make_shared<chi_math::AngularQuadratureCustom>(
-    azi_angles, pol_angles, weights,false);
+    azi_angles, pol_angles, weights, false);
 
   chi::angular_quadrature_stack.push_back(new_quad);
-  size_t index = chi::angular_quadrature_stack.size()-1;
+  size_t index = chi::angular_quadrature_stack.size() - 1;
   lua_pushnumber(L,static_cast<lua_Number>(index));
 
   return 1;

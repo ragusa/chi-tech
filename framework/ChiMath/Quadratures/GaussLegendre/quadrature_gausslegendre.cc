@@ -1,5 +1,5 @@
 #include "quadrature_gausslegendre.h"
-#include "LegendrePoly/legendrepoly.h"
+#include "ChiMath/Quadratures/LegendrePoly/legendrepoly.h"
 #include <cmath>
 
 #include "chi_runtime.h"

@@ -6,7 +6,7 @@
 #include "ChiMath/chi_math.h"
 #include "ChiMath/Quadratures/angular_quadrature_base.h"
 #include "ChiMath/dynamic_vector.h"
-#include "ChiMath/Quadratures/quadrature_gausslegendre.h"
+#include "ChiMath/Quadratures/GaussLegendre/quadrature_gausslegendre.h"
 #include "ChiMath/dynamic_matrix.h"
 
 #include <vector>
@@ -67,7 +67,7 @@ public:
   std::string output_filename_prefix;
 
 private:
-  static constexpr double a = 0.57735026919; ///< Inscribed cude side length
+  static constexpr double a = 0.57735026919; ///< Inscribed cube side length
   int initial_level = 0;
   std::vector<chi_mesh::Vector3>      diagonal_vertices;
   std::vector<SphericalQuadrilateral> initial_octant_SQs;

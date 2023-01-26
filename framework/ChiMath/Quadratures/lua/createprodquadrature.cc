@@ -85,37 +85,37 @@ int chiCreateProductQuadrature(lua_State *L)
 
     return 1;
   }
-  else if (ident == (int)chi_math::ProductQuadratureType::GAUSS_LEGENDRE_LEGENDRE)
-  {
-    if (num_args<3)
-      LuaPostArgAmountError("chiCreateProductQuadrature",3,num_args);
-
-    int Np = lua_tonumber(L,2);
-    int Na = lua_tonumber(L,3);
-    if (num_args == 4)
-      verbose = lua_toboolean(L,4);
-
-    chi::log.Log() << "Creating Gauss-Legendre-Legendre Quadrature\n";
-
-    auto new_quad =
-      std::make_shared<chi_math::AngularQuadratureProdGLL>(Np,Na,verbose);
-
-    chi::angular_quadrature_stack.push_back(new_quad);
-    const size_t index = chi::angular_quadrature_stack.size() - 1;
-    lua_pushnumber(L,static_cast<lua_Number>(index));
-
-    if (verbose)
-    {
-      chi::log.Log()
-        << "Created Gauss-Legendre-Legendre Quadrature with "
-        << new_quad->azimu_ang.size()
-        << " azimuthal angles and "
-        << new_quad->polar_ang.size()
-        << " polar angles.";
-    }
-
-    return 1;
-  }
+//  else if (ident == (int)chi_math::ProductQuadratureType::GAUSS_LEGENDRE_LEGENDRE)
+//  {
+//    if (num_args<3)
+//      LuaPostArgAmountError("chiCreateProductQuadrature",3,num_args);
+//
+//    int Np = lua_tonumber(L,2);
+//    int Na = lua_tonumber(L,3);
+//    if (num_args == 4)
+//      verbose = lua_toboolean(L,4);
+//
+//    chi::log.Log() << "Creating Gauss-Legendre-Legendre Quadrature\n";
+//
+//    auto new_quad =
+//      std::make_shared<chi_math::AngularQuadratureProdGLL>(Np,Na,verbose);
+//
+//    chi::angular_quadrature_stack.push_back(new_quad);
+//    const size_t index = chi::angular_quadrature_stack.size() - 1;
+//    lua_pushnumber(L,static_cast<lua_Number>(index));
+//
+//    if (verbose)
+//    {
+//      chi::log.Log()
+//        << "Created Gauss-Legendre-Legendre Quadrature with "
+//        << new_quad->azimu_ang.size()
+//        << " azimuthal angles and "
+//        << new_quad->polar_ang.size()
+//        << " polar angles.";
+//    }
+//
+//    return 1;
+//  }
   else if (ident == (int)chi_math::ProductQuadratureType::GAUSS_LEGENDRE_CHEBYSHEV)
   {
     if (num_args<3)

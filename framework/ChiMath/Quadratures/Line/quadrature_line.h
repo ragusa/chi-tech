@@ -1,7 +1,7 @@
 #ifndef QUADRATURE_LINE_H
 #define QUADRATURE_LINE_H
 
-#include "quadrature_gausslegendre.h"
+#include "ChiMath/Quadratures/GaussLegendre/quadrature_gausslegendre.h"
 
 namespace chi_math
 {
