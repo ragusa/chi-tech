@@ -36,7 +36,7 @@ public:
 };
 
 //###################################################################
-/**Spherical logical volume.*/
+/**angular_Spherical logical volume.*/
 class chi_mesh::SphereLogicalVolume : public LogicalVolume
 {
 public:

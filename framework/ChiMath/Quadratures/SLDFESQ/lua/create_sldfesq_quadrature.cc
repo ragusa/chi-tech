@@ -7,7 +7,7 @@
 
 //###################################################################
 /** Creates a Simplified Linear Discontinuous Finite Element (SLDFE)
-quadrature based on Spherical Quadrilaterals (SQ). Hence SLDFE-SQ.
+quadrature based on angular_Spherical Quadrilaterals (SQ). Hence SLDFE-SQ.
 \param initial_refinement_level int Initial refinement level, \f$n\f$ to
        be used. The total number of angles will be \f$ 8{\times}12(n+1)^2 \f$.
 

@@ -5,10 +5,10 @@
  * defined in the paper by Cheuk Lau and Marvin Adams:
  * "Discrete Ordinates Quadratures Based on Linear
  * and Quadratic Discontinuous Finite Elements over
- * Spherical Quadrilaterals", Nuclear Science and Engineering, 185:1,
+ * angular_Spherical Quadrilaterals", Nuclear Science and Engineering, 185:1,
  * pages 36-52, 2017.
  *
- * \image html "SLDFESQn40.png" "LDFE Spherical Quadrilaterals at a refinement level of n=40" width=800px
+ * \image html "SLDFESQn40.png" "LDFE angular_Spherical Quadrilaterals at a refinement level of n=40" width=800px
  *
  *
  * # Synopsis
@@ -27,7 +27,7 @@
  *   onto the cube faces, for which we will call the reference frame the
  *   \f$xyz\f$-prime reference frame.
  * - The sub-squares on each face project onto
- *   Spherical Quadrilaterals (SQs) on the unit sphere, a space which we
+ *   angular_Spherical Quadrilaterals (SQs) on the unit sphere, a space which we
  *   shall refer to as the \f$xyz\f$ reference frame. Or in the paper
  *   mu-eta-xi.
  *   \image html "SLDFESQFig3.png" width=400px

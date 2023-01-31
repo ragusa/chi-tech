@@ -11,12 +11,13 @@ namespace chi_math
 
   enum class AngularQuadratureType
   {
-    Arbitrary         = 1,
-    ProductQuadrature = 2,
-    SLDFESQ           = 3
+    GaussLegendre        = 1,
+    GaussLobatto         = 2, //jcr
+    ProductQuadrature    = 3,
+    TriangularQuadrature = 4,
+    SLDFESQ              = 5
   };
   class AngularQuadrature;
-  class AngularQuadratureCustom;
 }
 
 /**Simple structure to add angle values to directions.*/
@@ -39,15 +40,20 @@ public:
 public:
   // direction cosines
   std::vector<chi_mesh::Vector3>                 omegas;
+  // weights
+  std::vector<double>                            weights;
   // angle values phi and theta for each omega (used in aggregation)
   std::vector<chi_math::QuadraturePointPhiTheta> abscissae;
-  // weights. when d2m is created, make sure weights are overwritten
-  // we keep weights for compatibility.
-  std::vector<double>                            weights;
   // dimension of the problem
-  int dim;
+  int dimension;
   // number of directions
   int num_dirs;
+  // number of moments
+  int num_moms;
+  // is galerkin_quad ?
+  bool galerkin = false;
+  // normalization
+  double normalization;
 
   // mapping from single index to {ell,m} pairs
   struct HarmonicIndices
@@ -67,18 +73,14 @@ public:
   };
 
 protected:
-  std::vector<std::vector<double>> d2m_op;
-  std::vector<std::vector<double>> m2d_op;
+  std::vector<std::vector<double>> d2m;
+  std::vector<std::vector<double>> m2d;
   std::vector<HarmonicIndices>     m_to_ell_em_map;
-  bool                             d2m_op_built = false;
-  bool                             m2d_op_built = false;
+  bool                             d2m_built = false;
+  bool                             m2d_built = false;
 
 public:
-  // constructors
-  AngularQuadrature() :
-  type(chi_math::AngularQuadratureType::Arbitrary)
-  {}
-
+  // constructor
   explicit
   AngularQuadrature(chi_math::AngularQuadratureType in_type) :
     type(in_type)
@@ -87,14 +89,10 @@ public:
   // destructor
   virtual ~AngularQuadrature() = default;
 
-  // should never be used
-//  virtual void OptimizeForPolarSymmetry(double normalization);
 
   // d2m and m2d operators
-  virtual void BuildDiscreteToMomentOperator(unsigned int scattering_order,
-                                             int dimension);
-  virtual void BuildMomentToDiscreteOperator(unsigned int scattering_order,
-                                             int dimension);
+  virtual void BuildDiscreteToMomentUsual(unsigned int scattering_order);
+  virtual void BuildMomentToDiscreteUsual(unsigned int scattering_order);
 
   // getters
   std::vector<std::vector<double>> const&
@@ -107,18 +105,8 @@ public:
   GetMomentToHarmonicsIndexMap() const;
 
 protected:
-  virtual void MakeHarmonicIndices(unsigned int scattering_order, int dimension);
+  virtual void MakeHarmonicIndices(unsigned int scattering_order);
 
-};
-
-//----------------------- the custom angular quadrature class
-class chi_math::AngularQuadratureCustom : public chi_math::AngularQuadrature
-{
-public:
-  AngularQuadratureCustom(std::vector<double>& azimuthal,
-                          std::vector<double>& polar,
-                          std::vector<double>& in_weights,
-                          bool verbose);
 };
 
 #endif

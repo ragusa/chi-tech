@@ -44,7 +44,7 @@
 //}
 
 //###################################################################
-/**Populates a map of moment m to the Spherical Harmonic indices
+/**Populates a map of moment m to the angular_Spherical Harmonic indices
  * required.*/
 void chi_math::AngularQuadrature::
   MakeHarmonicIndices(unsigned int scattering_order, int dimension)

@@ -7,7 +7,7 @@
 
 
 This code has a whitepaper associated with it
-<a href="SphericalHarmonics.pdf" target="_blank"><b>Spherical Harmonics</b></a>
+<a href="SphericalHarmonics.pdf" target="_blank"><b>angular_Spherical Harmonics</b></a>
 
 
  \param ell int The ell order of the polynomial.

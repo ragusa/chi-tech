@@ -7,7 +7,7 @@
 /**Implementation of the tesseral spherical harmonics.
  *
  * This code has a whitepaper associated with it
- * <a href="SphericalHarmonics.pdf" target="_blank"><b>Spherical Harmonics</b></a>
+ * <a href="SphericalHarmonics.pdf" target="_blank"><b>angular_Spherical Harmonics</b></a>
  * */
 double chi_math::Ylm(unsigned int ell, int m, double varphi, double theta)
 {

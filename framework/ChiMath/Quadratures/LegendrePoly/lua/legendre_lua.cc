@@ -49,7 +49,7 @@ int chiLegendreDerivative(lua_State *L)
 \param varphi double Radian azimuthal angle \f$ \varphi \f$.
 
 This code has a whitepaper associated with it
-<a href="SphericalHarmonics.pdf" target="_blank"><b>Spherical Harmonics</b></a>
+<a href="SphericalHarmonics.pdf" target="_blank"><b>angular_Spherical Harmonics</b></a>
 
 \ingroup LuaMath*/
 int chiYlm(lua_State* L)

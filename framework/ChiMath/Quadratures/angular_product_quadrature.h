@@ -12,14 +12,15 @@ namespace chi_math
   {
     UNKNOWN                  = 0,
     GAUSS_LEGENDRE           = 1,
-    GAUSS_CHEBYSHEV          = 2,
-//    GAUSS_LEGENDRE_LEGENDRE  = 3,
+    GAUSS_LOBATTO            = 2,
+//    GAUSS_LEGENDRE_LEGENDRE  = 3, //jcr
     GAUSS_LEGENDRE_CHEBYSHEV = 4,
     CUSTOM_QUADRATURE        = 5,
   };
 
   class ProductQuadrature;
   class AngularQuadratureProdGL;
+  class AngularQuadratureProdGLo;
 //  class AngularQuadratureProdGLL;
   class AngularQuadratureProdGLC;
   class AngularQuadratureProdCustom;

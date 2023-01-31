@@ -10,7 +10,7 @@ namespace chi_math
   class CylindricalAngularQuadrature;
 }
 
-/** Cylindrical product angular quadrature. */
+/** angular_Cylindrical product angular quadrature. */
 class chi_math::CylindricalAngularQuadrature : public chi_math::CurvilinearAngularQuadrature
 {
 //  Methods

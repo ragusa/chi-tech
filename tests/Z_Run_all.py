@@ -541,19 +541,19 @@ run_test(
     search_strings_vals_tols=[["[0]          Final k-eigenvalue    :", 0.99954, 1.0e-5]])
 
 # $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-#       Transport tests, Steady State, Cylindrical
+#       Transport tests, Steady State, angular_Cylindrical
 # $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 #30
 run_test(
     file_name="Transport_Steady_Cyl/Transport2DCyl_1Monoenergetic",
-    comment="2D LinearBSolver Cylindrical Test mono-energetic - PWLD",
+    comment="2D LinearBSolver angular_Cylindrical Test mono-energetic - PWLD",
     num_procs=4,
     search_strings_vals_tols=[["[0]  Max-value=", 1.00000, 1.0e-09]])
 
 #31
 run_test(
     file_name="Transport_Steady_Cyl/Transport2DCyl_2Multigroup",
-    comment="2D LinearBSolver Cylindrical Test multi-group - PWLD",
+    comment="2D LinearBSolver angular_Cylindrical Test multi-group - PWLD",
     num_procs=4,
     search_strings_vals_tols=[["[0]  Max-valueG1=", 1.00000, 1.0e-09],
                               ["[0]  Max-valueG2=", 0.25000, 1.0e-09]])

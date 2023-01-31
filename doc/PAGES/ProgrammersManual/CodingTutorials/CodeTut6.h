@@ -41,7 +41,7 @@ where the variables have the following meaning
 - \f$ \boldsymbol{\Omega}_n \f$ is the \f$ n \f$-th direction vector
 - \f$ \sigma_{tg} \f$ is the total interaction cross section for group \f$ g \f$
 - \f$ \psi_{gn} \f$ is the angular flux for group \f$ g \f$ and direction \f$ n \f$
-- \f$ Y_{\ell m^*} \f$ is the tesseral Spherical Harmonic function where \f$ (\ell, m^*) \f$
+- \f$ Y_{\ell m^*} \f$ is the tesseral angular_Spherical Harmonic function where \f$ (\ell, m^*) \f$
  is mapped from \f$ m \f$
 - \f$ \sigma_{sm,g'{\to}g} \f$ is the scattering cross section for moment
  \f$ m \f$ scattering from group \f$ g' \f$ to \f$ g \f$
