@@ -9,7 +9,7 @@ Hence, there will be $nazimu \times npolar$ directions per octant.
 In 2D XY geometry, we only use 4 octants instead of 8 octants.
 ```
 --################################################
-nazimu = 1
+nazimu = 2
 npolar = 4
 pquad = chiCreateProductQuadrature(GAUSS_LEGENDRE_CHEBYSHEV,nazimu,npolar)
 chiOptimizeAngularQuadratureForPolarSymmetry(pquad, 4.0*math.pi)
@@ -30,7 +30,10 @@ end
 print(string.format("+---------+-------------+------------+------------+"))
 
 ```
-### Printing quadrature data to a file for subsequent plotting
+### Printing quadrature data to a file for subsequent plotting.
+
+You can plot the directions of the quadrature using the [Python script](./plot_ang_quad.py) found in this folder.
+
 ```
 -- Opens a file in write mode
 filename = "qdata_na" .. tostring(nazimu) .. "_np" .. tostring(npolar) .. ".csv"
@@ -75,7 +78,7 @@ ___
 You can copy/paste it or look in the file named ```./angular_quad/productGLC.lua```:
 ```
 --################################################
-nazimu = 1
+nazimu = 2
 npolar = 4
 pquad = chiCreateProductQuadrature(GAUSS_LEGENDRE_CHEBYSHEV,nazimu,npolar)
 chiOptimizeAngularQuadratureForPolarSymmetry(pquad, 4.0*math.pi)
