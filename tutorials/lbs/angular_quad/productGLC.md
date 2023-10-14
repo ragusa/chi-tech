@@ -35,6 +35,7 @@ print(string.format("+---------+-------------+------------+------------+"))
 You can plot the directions of the quadrature using the [Python script plot_ang_quad.py](./plot_ang_quad.py) found in this same folder.
 
 A sample plot is shown below:
+
 ![Directions](images/ang_quad_plot.png)
 
 ```
