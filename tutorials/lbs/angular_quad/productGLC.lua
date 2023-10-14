@@ -87,13 +87,20 @@ print(string.format("+------+--------+------------+-----------+----------------+
 --[[ @doc
 ## Checking Orthogonality of Spherical Harmonic Functions
 -- @end ]]
-print(string.format("+-------+-------+-------+-------+---------------+"))
-print(string.format("|   l1  |   m1  |   l2  |   m2  | orthogonality |"))
-print(string.format("+-------+-------+-------+-------+---------------+"))
-for L1=0,3 do
+
+L_max_order = 2
+print(string.format("+-------+-------+-------+-------+---------------+----------+"))
+print(string.format("|   l1  |   m1  |   l2  |   m2  | orthogonality |   truth  |"))
+print(string.format("+-------+-------+-------+-------+---------------+----------+"))
+for L1=0,L_max_order do
    for M1=-L1,L1,increment do
-      for L2=0,3 do
+      for L2=0,L_max_order do
          for M2=-L2,L2,increment do
+            truth=0.
+            if(L1==L2 and M1==M2)
+            then
+               truth = 4*math.pi/(2*L1+1)
+            end
             integral=0.
             for d,v in pairs(qdata) do
                weight = v.weight
@@ -103,13 +110,13 @@ for L1=0,3 do
                val2 = chiYlm(L2, M2, polar, azimu)
                integral = integral + weight * val1 * val2
             end
-            s = string.format("|  %3d  |  %3d  |  %3d  |  %3d  |  %+8.4f     |",L1, M1, L2, M2, integral)
+            s = string.format("|  %3d  |  %3d  |  %3d  |  %3d  |  %+8.4f     | %+8.4f |",L1, M1, L2, M2, integral, truth)
             print(s)
          end
       end
    end
 end
-print(string.format("+-------+-------+-------+-------+---------------+\n"))
+print(string.format("+-------+-------+-------+-------+---------------+----------+\n"))
 
 --[[ @doc
 ### Another manner to print out data
