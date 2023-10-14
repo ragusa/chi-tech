@@ -32,7 +32,10 @@ print(string.format("+---------+-------------+------------+------------+"))
 ```
 ### Printing quadrature data to a file for subsequent plotting.
 
-You can plot the directions of the quadrature using the [Python script](./plot_ang_quad.py) found in this folder.
+You can plot the directions of the quadrature using the [Python script plot_ang_quad.py](./plot_ang_quad.py) found in this same folder.
+
+A sample plot is shown below:
+![Directions](images/ang_quad_plot.png)
 
 ```
 -- Opens a file in write mode
