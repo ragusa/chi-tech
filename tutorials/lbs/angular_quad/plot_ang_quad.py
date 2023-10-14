@@ -48,6 +48,8 @@ def plot_angular_quadrature(file_path):
     # determine if 2d or 3d quadrature data by looking at sum of mu's
     if np.sum(qdata[:, 1]) > 0.01:
         dim = 2
+    else:
+        dim = 3
     # get number of directions
     n_dir = qdata.shape[0]
     # compute omega
