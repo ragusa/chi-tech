@@ -77,3 +77,7 @@ scratch/
 *.data
 tests/BigTests/c5g7/Test1/solutions/
 **/*.cmesh
+
+#tutorial output
+tutorials/lbs/**/*.csv
+tutorials/lbs/**/*.*vtu
