@@ -12,9 +12,12 @@ In 2D XY geometry, we only use 4 octants instead of 8 octants.
 --################################################
 nazimu = 2
 npolar = 4
+pb_dim=3
 pquad = chiCreateProductQuadrature(GAUSS_LEGENDRE_CHEBYSHEV,nazimu,npolar)
-chiOptimizeAngularQuadratureForPolarSymmetry(pquad, 4.0*math.pi)
-
+if (pb_dim==2)
+then
+  chiOptimizeAngularQuadratureForPolarSymmetry(pquad, 4.0*math.pi)
+end
 --[[ @doc
 ### Here, we retrieve the quadrature data in lua to print it
 -- @end]]
@@ -28,7 +31,7 @@ for d,v in pairs(qdata) do
   s = string.format("| %5d   |    %6.4f   |   %7.4f  |   %7.3f  |",d, v.weight, math.cos(v.polar), v.azimuthal*180.0/math.pi)
   print(s)
 end
-print(string.format("+---------+-------------+------------+------------+"))
+print(string.format("+---------+-------------+------------+------------+\n"))
 
 --[[ @doc
 ### Printing quadrature data to a file for subsequent plotting.
@@ -54,6 +57,59 @@ end
 
 -- closes the open file
 io.close(fhandle)
+
+--[[ @doc
+## Print a few Spherical Harmonic for a given direction
+-- @end ]]
+if (pb_dim==2)
+then
+   increment=2
+else
+   increment=1
+end
+-- selected direction
+di=2
+
+print(string.format("+-------+--------+------------+-----------+---------------+"))
+print(string.format("|   l   |    m   |theta (deg.)| phi (deg.)|Y_lm(theta,phi)|"))
+print(string.format("+-------+--------+------------+-----------+---------------+"))
+for L1=0,3 do
+   for M1=-L1,L1,increment do
+      polar = qdata[di].polar
+      azimu = qdata[di].azimuthal
+      val1 = chiYlm(L1, M1, polar, azimu)
+      s = string.format("|  %3d  |  %3d   |   %7.2f  |  %7.2f  |     %6.4f    |",L1, M1, polar*180.0/math.pi, azimu*180.0/math.pi, val1)
+      print(s)
+   end
+end
+print(string.format("+------+--------+------------+-----------+----------------+\n"))
+
+--[[ @doc
+## Checking Orthogonality of Spherical Harmonic Functions
+-- @end ]]
+print(string.format("+-------+-------+-------+-------+---------------+"))
+print(string.format("|   l1  |   m1  |   l2  |   m2  | orthogonality |"))
+print(string.format("+-------+-------+-------+-------+---------------+"))
+for L1=0,3 do
+   for M1=-L1,L1,increment do
+      for L2=0,3 do
+         for M2=-L2,L2,increment do
+            integral=0.
+            for d,v in pairs(qdata) do
+               weight = v.weight
+               polar = v.polar
+               azimu = v.azimuthal
+               val1 = chiYlm(L1, M1, polar, azimu)
+               val2 = chiYlm(L2, M2, polar, azimu)
+               integral = integral + weight * val1 * val2
+            end
+            s = string.format("|  %3d  |  %3d  |  %3d  |  %3d  |  %+8.4f     |",L1, M1, L2, M2, integral)
+            print(s)
+         end
+      end
+   end
+end
+print(string.format("+-------+-------+-------+-------+---------------+\n"))
 
 --[[ @doc
 ### Another manner to print out data
