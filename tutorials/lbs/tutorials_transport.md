@@ -10,8 +10,8 @@
 *Note*:  Examples, denoted by ```#```, use KBA partitioning.
 - [**A Simple 1D-slab Grid: Reed's Problem**](./meshing/reed.md)
 - 2D Unstructured Grids:
-  - [```#```**Creating and Reading a 2D .gmsh file with material IDs and Boundary IDs**](./meshing/2D_gmsh.md)
-  - [```#```**Creating and Reading a 2D .obj file with material IDs and Boundary IDs**](./meshing/2D_obj.md)
+  - [```#```**Creating and Reading a 2D .gmsh file with material IDs and Boundary IDs**](./meshing/read_2D_gmsh.md)
+  - [```#```**Creating and Reading a 2D .obj file with material IDs and Boundary IDs**](./meshing/read_2D_obj_mesh.md)
   - [```#```**Creating and Reading a 2D spiderweb grid file with material IDs and Boundary IDs**](./meshing/2D_spider.md)
 - 3D Extrusion of 2D Unstructured Grids:
   - [```#```**3D Extrusion of 2D Unstructured Grid with material IDs and Boundary IDs**](./meshing/3D_extrusion.md)
