@@ -1,4 +1,3 @@
---[[ @doc
 # Read a 2D obj mesh
 ___
 
@@ -30,7 +29,7 @@ The resulting mesh and material layout is shown below:
 The resulting mesh and partition is shown below:
 ![Mesh_Partition](images/Triangle_1542_mesh_partition.png)
 
--- @end ]]
+```
 --############################################### Setup mesh
 meshgen = chi_mesh.MeshGenerator.Create
 ({
@@ -51,7 +50,7 @@ meshgen = chi_mesh.MeshGenerator.Create
 chi_mesh.MeshGenerator.Execute(meshgen)
 chiMeshHandlerExportMeshToVTK("Triangle_1542_mesh_only")
 
---[[ @doc
+```
 ## The rest of the simulation
 The following line inserts the rest of the simulation data:
 + materials and sources
@@ -64,7 +63,38 @@ You can view it [here](transport_simulation_part.md)
 The resulting scalar flux is shown below:
 ![Scalar_flux](images/Triangle_1542_scalar_flux.png)
 
--- @end ]]
+```
 --############################################### rest of the simulation
 dofile("transport_simulation_part.lua")
 
+```
+___
+## The complete input is below:
+You can copy/paste it or look in the file named ```./meshing/read_2D_obj_mesh.lua```:
+```
+--############################################### Setup mesh
+meshgen = chi_mesh.MeshGenerator.Create
+({
+  inputs =
+  {
+    chi_mesh.FromFileMeshGenerator.Create
+    ({
+        filename="./tri_2mat_bc_1542.obj"
+    }),
+  },
+  partitioner = chi.KBAGraphPartitioner.Create
+  ({
+    nx = 2, ny=2, nz=1,
+    xcuts = {0.5}, ycuts = {0.5},
+  })
+})
+
+chi_mesh.MeshGenerator.Execute(meshgen)
+chiMeshHandlerExportMeshToVTK("Triangle_1542_mesh_only")
+
+--############################################### rest of the simulation
+dofile("transport_simulation_part.lua")
+
+```
+___
+Back to [**Tutorial Home**](../tutorials_transport.md#first_example)

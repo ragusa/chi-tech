@@ -6,18 +6,14 @@ Created on Wed Sep 13 23:12:09 2023
 @author: jean.ragusa
 """
 
-# %% import python module
-from __future__ import absolute_import
+# %% import python modules
 from __future__ import print_function
-
-import numpy as np
-
-import matplotlib.pyplot as plt
-# import matplotlib.tri as mtri
+from __future__ import absolute_import
+import meshpy.triangle as triangle
 from six.moves import range
 
-import meshpy.triangle as triangle
-
+import numpy as np
+import matplotlib.pyplot as plt
 plt.close("all")
 
 # %% small utility function to create facets (edgelets) given a list of points
@@ -33,10 +29,27 @@ def round_trip_connect(start, end):
 
 # %% definition of the 2D geometry using planar straight line segments
 # to be then meshed with the Triangle mesh generator, via MeshPy
+# this is the only data that needs to be changed for a new mesh:
+# Specifically,
+#   max_area:                 the maximum triangle area
+#   use_face_markers:         whether you are supplying face markers (use 0 for internal faces and positive values for faces on the boundary)
+#   use_attributes:           whether you are using material attributes
+#   basename:                 the basename of the obj file to be created (the number of cells and the .obj extension will be added automatically)
+#   do_plot:                  whether you want a pyplot plot of the mesh
+#   save_meshing_data_to_txt: whether you want the meshing data to be saved in ndarrays.
 
-max_vol = 1e-2
-use_face_markers = False
-use_attributes = False
+max_area = 1e-3
+use_face_markers = True
+use_attributes = True
+basename = 'tri_2mat_bc_'
+do_plot = False
+save_meshing_data_to_txt = False
+
+#
+#  meshing data to be supplied by the user for their own mesh
+#  the goal of this section is to fill the triangle.MeshInfo() data
+#  that will be passed to triangle.build()
+#
 
 #              (2)
 #      5------------------4
@@ -124,7 +137,7 @@ mesh = triangle.build(
     info,
     verbose=False,
     refinement_func=None,
-    max_volume=max_vol,
+    max_volume=max_area,
     min_angle=25,
     attributes=use_attributes,
     generate_faces=True,
@@ -134,7 +147,7 @@ mesh = triangle.build(
 print(("%d elements" % len(mesh.elements)))
 print(("%d vertices" % len(mesh.points)))
 
-# %% extract meshing data into standard numpy ndarrays
+# %% extract meshing data from MeshPy/traingle into standard numpy ndarrays
 
 # el2pt = np.array(mesh.elements, dtype=int)
 print(mesh.elements[0])
@@ -174,8 +187,10 @@ for i in range(len(mesh.points)):
     pt2xy[i, :] = mesh.points[i]
 
 # %% plot mesh if requested
-do_plot = True
-axis_range = [-0.15, 1.15, -0.15, 1.15]
+xmin, ymin = np.min(pt2xy, axis=0)
+xmax, ymax = np.max(pt2xy, axis=0)
+delta = 0.15
+axis_range = [xmin-delta, xmax+delta, ymin-delta, ymax+delta]
 
 if do_plot:
 
@@ -214,7 +229,6 @@ if do_plot:
     plt.show()
 
 # %% save meshing data in txt files, if requested
-save_meshing_data_to_txt = False
 
 if save_meshing_data_to_txt:
     basename = 'Triangular_mesh_nelems' + str(len(el2pt[:, 0]))
@@ -227,7 +241,8 @@ if save_meshing_data_to_txt:
     np.savetxt(basename+'_el2ne.txt', el2ne, fmt="%i")
 
 # %% convert meshing data to wavefront obj
-dest_file = 'tri_2mat_bc_'+str(len(el2pt[:, 0]))+'.obj'
+dest_file = basename + str(len(el2pt[:, 0])) + '.obj'
+print("\nSaving data as: {}".format(dest_file))
 
 with open(dest_file, 'w') as f:
     f.write('# triangular mesh generated with Triangle thru MeshPy\n')
