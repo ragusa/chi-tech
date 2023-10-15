@@ -86,6 +86,9 @@ print(string.format("+------+--------+------------+-----------+----------------+
 
 --[[ @doc
 ## Checking Orthogonality of Spherical Harmonic Functions
+$$
+\int_0^{2\pi}d\varphi \int_{-1}^1 d\mu \ Y_{\ell_1,m_1}(\varphi,\mu) Y_{\ell_2,m_2}(\varphi,\mu) = \frac{4\pi}{2\ell_1+1}\delta_{\ell_1,\ell_2} \delta_{m_1,m_2}
+$$
 -- @end ]]
 
 L_max_order = 2
