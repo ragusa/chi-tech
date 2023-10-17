@@ -33,7 +33,8 @@
 --------------------------------------
 ## <a name="Materials"></a> **Materials**
 i.e., **Cross Sections and Volumetric Sources**
-- [**Multigroup Cross-Section Sets and Sources**](./materials/multi_materials.md)
+- [**Multigroup Cross-Section Sets and Sources**](./materials/mg_xs.md)
+- [**Multi-materials**](./materials/multi_materials.md)
 - [**Anisotropic Scattering**](./materials/anisotropic.md)
 
 --------------------------------------
