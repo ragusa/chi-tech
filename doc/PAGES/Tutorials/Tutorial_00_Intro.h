@@ -1,9 +1,11 @@
 /** \page Tutorial00 User Tutorials
- ## Fully commented tutorials
+ ## Fully commented basic tutorials
 
- \subpage Tutorial01 \n
- \subpage Tutorial02 \n
- \subpage Tutorial03 \n
+ \subpage BasicTutorials \n
+
+ ## Tutorials for the Linear Boltzmann Solver (LBS)
+
+ \subpage lbs_tutorials \n
 
  ## Meshing tutorials
  \subpage MeshTutorials \n
@@ -19,8 +21,8 @@
 
  However, remember that those are regression tests that are meant to run fast.
  Hence, you may want to revise the phase-space resolution
- (e.g., mesh, angle, energy)and the iteration parameters (tolerance, number of
- iterations) in your own input files in order to reach a satisfactory answer for
+ (e.g., mesh, angle, energy) and the iteration parameters (tolerance, number of
+ iterations, etc.) in your own input files in order to reach a satisfactory answer for
  modeling purposes.
 
  \e Note: The selection below does not include all regression tests.

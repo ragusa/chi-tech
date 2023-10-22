@@ -9,7 +9,7 @@
  The purpose of this tutorial is to understand the basics of the
  input paradigm which is completely different from the traditional
  input-card based method.
- ChiTech uses an imbedded Lua console. For a history of Lua please see its
+ ChiTech uses an embedded Lua console. For a history of Lua please see its
  wikipedia page
  <a href="https://en.wikipedia.org/wiki/Lua_(programming_language)">here</a>.
  This paradigm allows the user to control many aspects of the program flow

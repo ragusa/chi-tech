@@ -40,6 +40,20 @@ fi
 # functions
 python3 "doc/scripts/BuildListOfLuaWrappers.py"
 
+echo `pwd`
+#mkdir doc/generated_files/lbs/
+#mkdir doc/HTMLimages/lbs/
+#cp tutorials/lbs/tutorials_transport.md doc/generated_files/lbs/
+#
+#cp tutorials/lbs/first/first_example.md doc/generated_files/lbs/
+#cp tutorials/lbs/first/images/*.png doc/HTMLimages/lbs/
+#
+#cp tutorials/lbs/meshing/read_2D_obj_mesh.md doc/generated_files/lbs/
+#cp tutorials/lbs/meshing/transport_simulation_part.md doc/generated_files/lbs/
+#cp tutorials/lbs/meshing/images/*.png doc/HTMLimages/lbs/
+python3 "tutorials/lbs/lua2md.py"
+echo "123"
+#exit 1
 #============================== Build mainpage quick reference
 python3 "doc/scripts/MakeMainPage.py"
 

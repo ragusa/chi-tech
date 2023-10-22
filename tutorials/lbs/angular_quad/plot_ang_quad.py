@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Sat Oct 14 10:34:55 2023
+# Created on Sat Oct 14 10:34:55 2023
+# @author: jean.ragusa
 
-@author: jean.ragusa
-"""
 from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
 import csv as csv

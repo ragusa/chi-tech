@@ -1,9 +1,10 @@
 --[[ @doc
-# Product Quadrature of Gauss-Legendre-Chebyshev type.
+\page product_quadrature Product Quadrature of Gauss-Legendre-Chebyshev type.
+\tableofcontents
 ___
-## Create the Angular Quadrature
-  + ```nazimu``` is the number of subdivisions in **one*** quadrant of the the equatorial plane,
-  + ```npolar``` is the number of **positive** polar cosines.
+\section create Create the Angular Quadrature
+  + `nazimu` is the number of subdivisions in ***one*** quadrant of the the equatorial plane,
+  + `npolar` is the number of ***positive*** polar cosines.
 
 Hence, there will be $nazimu \times npolar$ directions per octant.
 
@@ -34,9 +35,9 @@ end
 print(string.format("+---------+-------------+------------+------------+\n"))
 
 --[[ @doc
-### Printing quadrature data to a file for subsequent plotting.
+\subsection printing Printing quadrature data to a file for subsequent plotting.
 
-You can plot the directions of the quadrature using the [Python script plot_ang_quad.py](./plot_ang_quad.py) found in this same folder.
+You can plot the directions of the quadrature using the [Python script plot_ang_quad.py](plot_ang_quad.py) found in this same folder.
 
 A sample plot is shown below:
 
@@ -59,7 +60,7 @@ end
 io.close(fhandle)
 
 --[[ @doc
-## Print a few Spherical Harmonic for a given direction
+\section spherical Print a few Spherical Harmonic for a given direction
 -- @end ]]
 if (pb_dim==2)
 then
@@ -85,7 +86,7 @@ end
 print(string.format("+------+--------+------------+-----------+----------------+\n"))
 
 --[[ @doc
-## Checking Orthogonality of Spherical Harmonic Functions
+\section orthogonality Checking Orthogonality of Spherical Harmonic Functions
 $$
 \int_0^{2\pi}d\varphi \int_{-1}^1 d\mu \ Y_{\ell_1,m_1}(\varphi,\mu) Y_{\ell_2,m_2}(\varphi,\mu) = \frac{4\pi}{2\ell_1+1}\delta_{\ell_1,\ell_2} \delta_{m_1,m_2}
 $$
@@ -122,7 +123,7 @@ end
 print(string.format("+-------+-------+-------+-------+---------------+----------+\n"))
 
 --[[ @doc
-### Another manner to print out data
+\section another Another manner to print out data
 The lua code below is current unused, see commented line.
 -- @end ]]
 --################################################
