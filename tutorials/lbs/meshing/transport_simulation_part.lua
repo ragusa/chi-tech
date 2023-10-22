@@ -2,7 +2,7 @@
 \page readmesh_rest The Rest of the Transport Simulation Input
 \tableofcontents
 
-\section mat Materials and Sources
+\section mat_rest Materials and Sources
 We create two materials and add two properties to it:
 + TRANSPORT_XSECTIONS for the transport cross sections, and
 + ISOTROPIC_MG_SOURCE for the isotropic volumetric source
@@ -38,7 +38,7 @@ chiPhysicsMaterialSetProperty(materials[1],ISOTROPIC_MG_SOURCE,FROM_ARRAY,src1)
 chiPhysicsMaterialSetProperty(materials[2],ISOTROPIC_MG_SOURCE,FROM_ARRAY,src2)
 
 --[[ @doc
-\section ang Angular Quadrature
+\section ang_rest Angular Quadrature
 
 We call a product Gauss-Legendre-Chebyshev quadrature and pass the number of **positive** polar cosines (here ```npolar = 2```) and the number of azimuthal subdivisions in **one quadrant** (```nazimu = 1```). This creates a 3D angular quadrature.
 
@@ -52,8 +52,8 @@ chiOptimizeAngularQuadratureForPolarSymmetry(pquad, 4.0*math.pi)
 
 --############################################### Setup LBS parameters
 --[[ @doc
-\section lbs_solver Linear Boltzmann Solver
-\subsection options_solver Options for the Linear Boltzmann Solver (LBS)
+\section lbs_solver_rest Linear Boltzmann Solver
+\subsection options_solver_rest Options for the Linear Boltzmann Solver (LBS)
 In the LBS block, we provide
 + the number of energy groups,
 + the groupsets (with 0-indexing), the handle for the angular quadrature, the angle aggregation, the solver type, tolerances, and other solver options.
@@ -75,7 +75,7 @@ lbs_block =
   }
 }
 --[[ @doc
-\subsection more_options Further Options for the Linear Boltzmann Solver
+\subsection more_options_rest Further Options for the Linear Boltzmann Solver
 In the LBS options, we pass the maximum scattering order to be employed (should be less than the one supplied the cross section file)
 -- @end ]]
 lbs_options =
@@ -83,7 +83,7 @@ lbs_options =
   scattering_order = 0,
 }
 --[[ @doc
-\subsection puttingtogether Putting the Linear Boltzmann Solver Together
+\subsection putting_together_rest Putting the Linear Boltzmann Solver Together
 We create the physics solver, initialize it, and execute it,
 -- @end ]]
 phys = lbs.DiscreteOrdinatesSolver.Create(lbs_block)
@@ -96,7 +96,7 @@ chiSolverInitialize(ss_solver)
 chiSolverExecute(ss_solver)
 
 --[[ @doc
-\section postprocessing Post-Processing via Field Functions
+\section postprocessing_rest Post-Processing via Field Functions
 We extract the scalar flux (i.e., the first entry in the field function list; recall that lua indexing starts at 1) and export it to a VTK file whose name is supplied by the user.
 
 - @end ]]

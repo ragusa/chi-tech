@@ -4,7 +4,7 @@
 
 Click here for more information on [WaveFront objects](https://en.wikipedia.org/wiki/Wavefront_.obj_file)
 
-\section create Create an Unstructured Triangular Mesh
+\section create_readobj Create an Unstructured Triangular Mesh
 
 We create an Unstructured Triangular Mesh with the Triangle Mesh Generator (via MeshPy).
 
@@ -15,7 +15,7 @@ function of [MeshPy](https://documen.tician.de/meshpy/).
 Alternatively, you can create the meshing data directly with the [Triangle Mesh Generator](http://www.cs.cmu.edu/~quake/triangle.html)
 and use our Python script to only convert the Triangle data into the WaveFront object.
 
-\section reading Reading the Mesh
+\section reading_readobj Reading the Mesh
 We use the ```FromFileMeshGenerator``` and pass the path to the obj file.
 
 We also partition the 2D mesh into 2x2 subdomains using ```KBAGraphPartitioner```.
@@ -56,7 +56,7 @@ chi_mesh.MeshGenerator.Execute(meshgen)
 chiMeshHandlerExportMeshToVTK("Triangle_1542_mesh_only")
 
 --[[ @doc
-\section  rest The rest of the simulation
+\section  rest_readobj The rest of the simulation
 The following line inserts the rest of the simulation data:
 + materials and sources
 + angular quadrature

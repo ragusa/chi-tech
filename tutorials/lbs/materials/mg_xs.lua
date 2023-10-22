@@ -2,13 +2,16 @@
 \page multigroup_cross_section Multigroup Cross Sections
 \tableofcontents
 ___
-\section background Background
+
+\section background_mg_xs Background
+
 Chi-Tech is not provided with cross-section libraries. Users are expected to supply their own multigroup cross-section data.
 One may use open-source software to generate this data (e.g., NJOY, Dragon, OpenMC).
 
 In a hurry? Jump to the Chi-Tech cross-section format description using the table of contents.
 
-\section mesh Mesh
+\section mesh_mg_xs Mesh
+
 A simple orthogonal 2D mesh.
 
 We create a right parallelepiped logical volume that contains the entire mesh and we assign a 0 for material ID to all cells found inside the logical volume. Logical volumes are quite powerful, see subsequent tutorials on meshing.
@@ -37,7 +40,9 @@ vol0 = chi_mesh.RPPLogicalVolume.Create({infx=true, infy=true, infz=true})
 chiVolumeMesherSetProperty(MATID_FROMLOGICAL,vol0,0)
 
 --[[ @doc
-\section materials Materials
+
+\section materials_mg_xs Materials
+
 We create a material and add two properties to it:
 + TRANSPORT_XSECTIONS for the transport cross sections, and
 + ISOTROPIC_MG_SOURCE for the isotropic volumetric source
@@ -50,7 +55,9 @@ chiPhysicsMaterialAddProperty(materials[1],TRANSPORT_XSECTIONS)
 chiPhysicsMaterialAddProperty(materials[1],ISOTROPIC_MG_SOURCE)
 
 --[[ @doc
-\section cross_sections Cross Sections
+
+\section cross_sections_mg_xs Cross Sections
+
 We assign the cross sections to the material by loading the file containing the cross sections.
 
 The ```CHI_XSFILE``` format is as follows:
@@ -88,7 +95,9 @@ chiPhysicsMaterialSetProperty(materials[1],TRANSPORT_XSECTIONS,
         CHI_XSFILE,"xs_1g_MatA.cxs")
 
 --[[ @doc
-\section external_source Volumetric Source
+
+\section external_source_mg_xs Volumetric Source
+
 We create a lua table containing the volumetric multigroup source and assign it to the material by passing that array.
 -- @end ]]
 num_groups = 1
@@ -99,7 +108,9 @@ end
 chiPhysicsMaterialSetProperty(materials[1],ISOTROPIC_MG_SOURCE,FROM_ARRAY,src)
 
 --[[ @doc
-\section angular_quadrature Angular Quadrature
+
+\section angular_quadrature_mg_xs Angular Quadrature
+
 We call a product Gauss-Legendre-Chebyshev quadrature and pass the number of **positive** polar cosines (here ```npolar = 2```) and the number of azimuthal subdivisions in **one quadrant** (```nazimu = 1```). This creates a 3D angular quadrature.
 
 We finish by optimizing the quadrature to only use the positive hemisphere for 2D simulations.
@@ -111,7 +122,9 @@ pquad = chiCreateProductQuadrature(GAUSS_LEGENDRE_CHEBYSHEV,nazimu,npolar)
 chiOptimizeAngularQuadratureForPolarSymmetry(pquad, 4.0*math.pi)
 
 --[[ @doc
-\section lbs_solver Linear Boltzmann Solver
+
+\section lbs_solver_mg_xs Linear Boltzmann Solver
+
 In the LBS block, we provide
 + the number of energy groups,
 + the groupsets (with 0-indexing), the handle for the angular quadrature, the angle aggregation, the solver type, tolerances, and other solver options.
@@ -153,7 +166,9 @@ chiSolverInitialize(ss_solver)
 chiSolverExecute(ss_solver)
 
 --[[ @doc
-\section post_processing Post-Processing via Field Functions
+
+\section post_processing_mg_xs Post-Processing via Field Functions
+
 We extract the scalar flux (i.e., the first entry in the field function list; recall that lua indexing starts at 1) and export it to a VTK file whose name is supplied by the user.
 
 The resulting scalar flux is shown below:
@@ -165,7 +180,9 @@ vtk_basename = "mg_xs"
 chiExportFieldFunctionToVTK(fflist[1],vtk_basename)
 
 --[[ @doc
-\section possible_extensions Possible Extensions
+
+\section possible_extensions_mg_xs Possible Extensions
+
 1. Change the number of MPI processes (you may want to delete the safeguard at the top of the input file to run with any number of MPI ranks);
 2. Change the spatial resolution by increasing or decreasing the number of cells;
 3. Change the angular resolution by increasing or decreasing the number of polar and azimuthal subdivisions.
